@@ -1,10 +1,6 @@
 USE BD_vacinacao;
 GO
 
--- -----------------------------------------------------
--- Seção de Carga de Dados
--- -----------------------------------------------------
-
 -- Limpando dados existentes na ordem correta para evitar conflitos de FK
 DELETE FROM dbo.UnidadeMedica_Vacinador;
 DELETE FROM dbo.Vacinacao;
@@ -86,12 +82,12 @@ SELECT Cd_Pessoa, Cd_Pessoa, Cd_CPF FROM dbo.PessoaFisica WHERE Cd_Pessoa IN (1,
 GO
 
 -- Tabela Vacinador (5 vacinadores)
-INSERT INTO dbo.Vacinador (Cd_COREN, Cd_Pessoa, Cd_CPF)
-SELECT 'COREN-SP-12345', 2, '22233344455' UNION ALL
-SELECT 'COREN-RJ-54321', 6, '66677788899' UNION ALL
-SELECT 'COREN-MG-67890', 12, '22244466688' UNION ALL
-SELECT 'COREN-BA-09876', 16, '66688800022' UNION ALL
-SELECT 'COREN-SC-24680', 23, '56565656565';
+INSERT INTO dbo.Vacinador (Cd_COREN, Cd_Pessoa, Cd_CPF) VALUES
+('SP12345-ENF', 2, '22233344455'),
+('RJ54321-ENF', 6, '66677788899'),
+('MG67890-ENF', 12, '22244466688'),
+('BA09876-ENF', 16, '66688800022'),
+('SC24680-ENF', 23, '56565656565');
 GO
 
 -- Tabela UnidadeMedica
@@ -123,7 +119,8 @@ GO
 
 -- Tabela Complemento
 INSERT INTO dbo.Complemento (Ds_Complemento, Cd_Tipo_Complemento) VALUES
-('Apto 101', 1), ('Casa 2', 2), ('Bloco B', 5), ('Sala 305', 6), ('Loja A', 7), ('Apto 502', 1), ('Casa 1', 2), ('Bloco C', 5), ('Sala 101', 6), ('Loja B', 7), ('Apto 202', 1), ('Casa 3', 2), ('Bloco A', 5), ('Sala 202', 6), ('Loja C', 7), ('Apto 303', 1), ('Casa 4', 2), ('Bloco D', 5), ('Sala 404', 6), ('Loja D', 7);
+('Apto 101', 1), ('Casa 2', 2), ('Bloco B', 5), ('Sala 305', 6), ('Loja A', 7), ('Apto 502', 1), ('Casa 1', 2), ('Bloco C', 5), ('Sala 101', 6), ('Loja B', 7), ('Apto 202', 1), ('Casa 3', 2), ('Bloco A', 5), ('Sala 202', 6), ('Loja C', 7), ('Apto 303', 1), ('Casa 4', 2), ('Bloco D', 5), ('Sala 404', 6), ('Loja D', 7),
+('Prédio Principal', 12), ('Andar 5', 1), ('Galpão 3', 8), ('Edifício Sede', 13), ('Torre Norte', 13), ('Térreo', 16);
 GO
 
 -- Tabela TipoEndereco
@@ -162,46 +159,26 @@ GO
 -- Tabela Vacinacao
 -- Histórico completo para o "Superpaciente" João da Silva (Cd_Paciente = 1)
 INSERT INTO dbo.Vacinacao (Cd_Paciente, Cd_COREN, Cd_Unidade_Medica, Cd_Dose, Dt_Vacinacao) VALUES
-(1, 'COREN-SP-12345', 'CNES1234567', 1, '2025-01-20'), (1, 'COREN-SP-12345', 'CNES1234567', 2, '2025-02-10'),
-(1, 'COREN-RJ-54321', 'CNES7654321', 3, '2025-03-01'), (1, 'COREN-MG-67890', 'CNES1122334', 4, '2025-03-05'),
-(1, 'COREN-BA-09876', 'CNES5566778', 6, '2025-04-10'), (1, 'COREN-SP-12345', 'CNES1234567', 7, '2025-04-12'),
-(1, 'COREN-RJ-54321', 'CNES7654321', 8, '2025-05-15'), (1, 'COREN-MG-67890', 'CNES1122334', 9, '2025-05-20'),
-(1, 'COREN-BA-09876', 'CNES5566778', 10, '2025-06-01'), (1, 'COREN-SP-12345', 'CNES1234567', 15, '2025-06-05'),
-(1, 'COREN-RJ-54321', 'CNES7654321', 17, '2025-06-10'), (1, 'COREN-MG-67890', 'CNES1122334', 18, '2025-06-15'),
-(1, 'COREN-BA-09876', 'CNES5566778', 19, '2025-06-20'), (1, 'COREN-SP-12345', 'CNES1234567', 21, '2025-06-25'),
-(1, 'COREN-RJ-54321', 'CNES7654321', 23, '2025-06-30'), (1, 'COREN-MG-67890', 'CNES1122334', 24, '2025-07-05'),
-(1, 'COREN-BA-09876', 'CNES5566778', 25, '2025-07-10'), (1, 'COREN-SP-12345', 'CNES1234567', 27, '2025-07-15'),
-(1, 'COREN-RJ-54321', 'CNES7654321', 29, '2025-07-20'), (1, 'COREN-MG-67890', 'CNES1122334', 30, '2025-07-25'),
-(1, 'COREN-BA-09876', 'CNES5566778', 31, '2025-07-30'),
+(1, 'SP12345-ENF', 'CNES1234567', 1, '2025-01-20'), (1, 'SP12345-ENF', 'CNES1234567', 2, '2025-02-10'),
+(1, 'RJ54321-ENF', 'CNES7654321', 3, '2025-03-01'), (1, 'MG67890-ENF', 'CNES1122334', 4, '2025-03-05'),
+(1, 'BA09876-ENF', 'CNES5566778', 6, '2025-04-10'), (1, 'SP12345-ENF', 'CNES1234567', 7, '2025-04-12'),
+(1, 'RJ54321-ENF', 'CNES7654321', 8, '2025-05-15'), (1, 'MG67890-ENF', 'CNES1122334', 9, '2025-05-20'),
+(1, 'BA09876-ENF', 'CNES5566778', 10, '2025-06-01'), (1, 'SP12345-ENF', 'CNES1234567', 15, '2025-06-05'),
+(1, 'RJ54321-ENF', 'CNES7654321', 17, '2025-06-10'), (1, 'MG67890-ENF', 'CNES1122334', 18, '2025-06-15'),
+(1, 'BA09876-ENF', 'CNES5566778', 19, '2025-06-20'), (1, 'SP12345-ENF', 'CNES1234567', 21, '2025-06-25'),
+(1, 'RJ54321-ENF', 'CNES7654321', 23, '2025-06-30'), (1, 'MG67890-ENF', 'CNES1122334', 24, '2025-07-05'),
+(1, 'BA09876-ENF', 'CNES5566778', 25, '2025-07-10'), (1, 'SP12345-ENF', 'CNES1234567', 27, '2025-07-15'),
+(1, 'RJ54321-ENF', 'CNES7654321', 29, '2025-07-20'), (1, 'MG67890-ENF', 'CNES1122334', 30, '2025-07-25'),
+(1, 'BA09876-ENF', 'CNES5566778', 31, '2025-07-30'),
 -- Outras vacinações
-(3, 'COREN-SP-12345', 'CNES1234567', 12, '2025-08-01'), (4, 'COREN-RJ-54321', 'CNES7654321', 13, '2025-08-02'),
-(5, 'COREN-MG-67890', 'CNES1122334', 14, '2025-08-03'), (7, 'COREN-BA-09876', 'CNES5566778', 16, '2025-08-04'),
-(8, 'COREN-SP-12345', 'CNES1234567', 20, '2025-08-05'), (9, 'COREN-RJ-54321', 'CNES7654321', 22, '2025-08-06');
+(3, 'SP12345-ENF', 'CNES1234567', 12, '2025-08-01'), (4, 'RJ54321-ENF', 'CNES7654321', 13, '2025-08-02'),
+(5, 'MG67890-ENF', 'CNES1122334', 14, '2025-08-03'), (7, 'BA09876-ENF', 'CNES5566778', 16, '2025-08-04'),
+(8, 'SP12345-ENF', 'CNES1234567', 20, '2025-08-05'), (9, 'RJ54321-ENF', 'CNES7654321', 22, '2025-08-06');
 GO
 
 -- Tabela UnidadeMedica_Vacinador
 INSERT INTO dbo.UnidadeMedica_Vacinador (Cd_Unidade_Medica, Cd_COREN) VALUES
-('CNES1234567', 'COREN-SP-12345'), ('CNES7654321', 'COREN-RJ-54321'), ('CNES1122334', 'COREN-MG-67890'),
-('CNES5566778', 'COREN-BA-09876'), ('CNES1234567', 'COREN-BA-09876'), ('CNES1234567', 'COREN-RJ-54321'),
-('CNES7654321', 'COREN-SP-12345');
-GO
-
--- -----------------------------------------------------
--- Comando Final: Listar Tabelas e suas Cardinalidades
--- -----------------------------------------------------
-SELECT
-    t.name AS Nome_Tabela,
-    p.rows AS Cardinalidade
-FROM
-    sys.tables t
-INNER JOIN
-    sys.indexes i ON t.object_id = i.object_id
-INNER JOIN
-    sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id
-WHERE
-    i.index_id <= 1
-GROUP BY
-    t.name, p.rows
-ORDER BY
-    Nome_Tabela;
+('CNES1234567', 'SP12345-ENF'), ('CNES7654321', 'RJ54321-ENF'), ('CNES1122334', 'MG67890-ENF'),
+('CNES5566778', 'BA09876-ENF'), ('CNES1234567', 'BA09876-ENF'), ('CNES1234567', 'RJ54321-ENF'),
+('CNES7654321', 'SP12345-ENF'), ('CNES1122334', 'SC24680-ENF');
 GO
