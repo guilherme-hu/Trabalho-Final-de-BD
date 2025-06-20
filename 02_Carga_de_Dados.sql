@@ -102,15 +102,14 @@ GO
 
 -- Tabela Nacionalidade
 INSERT INTO dbo.Nacionalidade (Cd_Nacionalidade, Cd_Pessoa, Cd_Pais)
-SELECT Cd_Pessoa, Cd_Pessoa, 1 FROM dbo.Pessoa WHERE Cd_Pessoa <= 23
+SELECT Cd_Pessoa, Cd_Pessoa, 1 FROM dbo.Pessoa WHERE Cd_Pessoa <= 23 -- Pessoas físicas
 UNION ALL
-SELECT Cd_Pessoa, Cd_Pessoa, 5 FROM dbo.Pessoa WHERE Cd_Pessoa = 101
+SELECT Cd_Pessoa, Cd_Pessoa, 5 FROM dbo.Pessoa WHERE Cd_Pessoa = 101 -- Pfizer é dos EUA
 UNION ALL
-SELECT Cd_Pessoa, Cd_Pessoa, 17 FROM dbo.Pessoa WHERE Cd_Pessoa = 109
+SELECT Cd_Pessoa, Cd_Pessoa, 17 FROM dbo.Pessoa WHERE Cd_Pessoa = 109 -- AstraZeneca é do Reino Unido
 UNION ALL
-SELECT Cd_Pessoa, Cd_Pessoa, 1 FROM dbo.Pessoa WHERE Cd_Pessoa IN (102, 103, 104, 105, 106, 107, 108, 110);
+SELECT Cd_Pessoa, Cd_Pessoa, 1 FROM dbo.Pessoa WHERE Cd_Pessoa IN (102, 103, 104, 105, 106, 107, 108, 110); -- Outras pessoas jurídicas do Brasil
 GO
-
 
 -- Tabela TipoComplemento
 INSERT INTO dbo.TipoComplemento (Cd_Tipo_Complemento, Nm_Tipo_Complemento) VALUES
@@ -128,7 +127,7 @@ INSERT INTO dbo.TipoEndereco (Cd_Tipo_Endereco, Nm_Tipo_Endereco) VALUES
 (1, 'Residencial'), (2, 'Comercial'), (3, 'Cobrança'), (4, 'Entrega'), (5, 'Principal');
 GO
 
--- Tabela Endereco (Garantindo endereço para todos)
+-- Tabela Endereco
 INSERT INTO dbo.Endereco (Cd_Endereco, Nu_Logradouro, Cd_Logradouro, Ds_Complemento, Cd_Tipo_Endereco, PF_Cd_Pessoa, PF_Cd_CPF, PJ_Cd_Pessoa) VALUES
 -- Endereços Pessoa Física
 (1, 100, 1, 'Apto 101', 1, 1, '11122233344', NULL), (2, 200, 3, 'Casa 2', 1, 2, '22233344455', NULL), (3, 300, 5, 'Apto 202', 1, 3, '33344455566', NULL), (4, 400, 7, 'Bloco B', 1, 4, '44455566677', NULL), (5, 500, 9, 'Sala 305', 1, 5, '55566677788', NULL), (6, 600, 11, 'Loja A', 1, 6, '66677788899', NULL), (7, 700, 13, 'Casa 3', 1, 7, '77788899900', NULL), (8, 800, 15, 'Apto 502', 1, 8, '88899900011', NULL), (9, 900, 17, 'Casa 1', 1, 9, '99900011122', NULL), (10, 1000, 19, 'Apto 303', 1, 10, '00011122233', NULL), (11, 101, 20, 'Casa 4', 1, 11, '11133355577', NULL), (12, 202, 18, 'Apto 101', 1, 12, '22244466688', NULL), (13, 303, 16, 'Bloco A', 1, 13, '33355577799', NULL), (14, 404, 14, 'Sala 404', 1, 14, '44466688800', NULL), (15, 505, 12, 'Casa 1', 1, 15, '55577799911', NULL), (16, 606, 10, 'Apto 202', 1, 16, '66688800022', NULL), (17, 707, 8, 'Bloco D', 1, 17, '77799911133', NULL), (18, 808, 6, 'Sala 101', 1, 18, '88800022244', NULL), (19, 909, 4, 'Apto 502', 1, 19, '12121212121', NULL), (20, 110, 2, 'Casa 2', 1, 20, '23232323232', NULL), (21, 220, 1, 'Bloco C', 1, 21, '34343434343', NULL), (22, 330, 3, 'Sala 202', 1, 22, '45454545454', NULL), (23, 440, 21, 'Apto 101', 1, 23, '56565656565', NULL),
@@ -157,7 +156,6 @@ INSERT INTO dbo.Dose (Cd_Dose, Nu_Dose, Cd_Ampola) VALUES
 GO
 
 -- Tabela Vacinacao
--- Histórico completo para o "Superpaciente" João da Silva (Cd_Paciente = 1)
 INSERT INTO dbo.Vacinacao (Cd_Paciente, Cd_COREN, Cd_Unidade_Medica, Cd_Dose, Dt_Vacinacao) VALUES
 (1, 'SP12345-ENF', 'CNES1234567', 1, '2025-01-20'), (1, 'SP12345-ENF', 'CNES1234567', 2, '2025-02-10'),
 (1, 'RJ54321-ENF', 'CNES7654321', 3, '2025-03-01'), (1, 'MG67890-ENF', 'CNES1122334', 4, '2025-03-05'),
@@ -169,11 +167,10 @@ INSERT INTO dbo.Vacinacao (Cd_Paciente, Cd_COREN, Cd_Unidade_Medica, Cd_Dose, Dt
 (1, 'RJ54321-ENF', 'CNES7654321', 23, '2025-06-30'), (1, 'MG67890-ENF', 'CNES1122334', 24, '2025-07-05'),
 (1, 'BA09876-ENF', 'CNES5566778', 25, '2025-07-10'), (1, 'SP12345-ENF', 'CNES1234567', 27, '2025-07-15'),
 (1, 'RJ54321-ENF', 'CNES7654321', 29, '2025-07-20'), (1, 'MG67890-ENF', 'CNES1122334', 30, '2025-07-25'),
-(1, 'BA09876-ENF', 'CNES5566778', 31, '2025-07-30'),
--- Outras vacinações
-(3, 'SP12345-ENF', 'CNES1234567', 12, '2025-08-01'), (4, 'RJ54321-ENF', 'CNES7654321', 13, '2025-08-02'),
-(5, 'MG67890-ENF', 'CNES1122334', 14, '2025-08-03'), (7, 'BA09876-ENF', 'CNES5566778', 16, '2025-08-04'),
-(8, 'SP12345-ENF', 'CNES1234567', 20, '2025-08-05'), (9, 'RJ54321-ENF', 'CNES7654321', 22, '2025-08-06');
+(1, 'BA09876-ENF', 'CNES5566778', 31, '2025-07-30'), (3, 'SP12345-ENF', 'CNES1234567', 12, '2025-08-01'), 
+(4, 'RJ54321-ENF', 'CNES7654321', 13, '2025-08-02'), (5, 'MG67890-ENF', 'CNES1122334', 14, '2025-08-03'), 
+(7, 'BA09876-ENF', 'CNES5566778', 16, '2025-08-04'), (8, 'SP12345-ENF', 'CNES1234567', 20, '2025-08-05'), 
+(9, 'RJ54321-ENF', 'CNES7654321', 22, '2025-08-06');
 GO
 
 -- Tabela UnidadeMedica_Vacinador
