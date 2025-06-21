@@ -39,4 +39,3 @@ HAVING
     COUNT(DISTINCT dbo.Lote.Cd_Fabricante) = (SELECT COUNT(*) FROM dbo.Fabricante);
 
 GO
-
