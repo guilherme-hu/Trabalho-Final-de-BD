@@ -50,4 +50,3 @@ UNION ALL
 SELECT 'Vacinador' AS Tabela, COUNT(*) AS Cardinalidade FROM dbo.Vacinador
 ORDER BY Tabela;
 GO
-
