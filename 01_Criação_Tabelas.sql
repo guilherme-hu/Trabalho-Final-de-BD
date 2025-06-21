@@ -164,16 +164,13 @@ GO
 
 -- Tabela Nacionalidade
 CREATE TABLE dbo.Nacionalidade (
-    Cd_Nacionalidade INT NOT NULL,
+    Cd_Nacionalidade INT IDENTITY(1,1) NOT NULL, 
     Cd_Pessoa INT NOT NULL,
     Cd_Pais INT NOT NULL,
     PRIMARY KEY (Cd_Nacionalidade),
-    CONSTRAINT fk_Nacionalidade_Pessoa1
-        FOREIGN KEY (Cd_Pessoa)
-        REFERENCES dbo.Pessoa (Cd_Pessoa),
-    CONSTRAINT fk_Nacionalidade_Pais1
-        FOREIGN KEY (Cd_Pais)
-        REFERENCES dbo.Pais (Cd_Pais)
+    CONSTRAINT UQ_Pessoa_Pais UNIQUE (Cd_Pessoa, Cd_Pais), -- Garante que uma pessoa não pode ter a mesma nacionalidade duas vezes
+    CONSTRAINT fk_Nacionalidade_Pessoa1 FOREIGN KEY (Cd_Pessoa) REFERENCES dbo.Pessoa(Cd_Pessoa),
+    CONSTRAINT fk_Nacionalidade_Pais1 FOREIGN KEY (Cd_Pais) REFERENCES dbo.Pais(Cd_Pais)
 );
 CREATE INDEX fk_Nacionalidade_Pessoa1_idx ON dbo.Nacionalidade (Cd_Pessoa ASC);
 CREATE INDEX fk_Nacionalidade_Pais1_idx ON dbo.Nacionalidade (Cd_Pais ASC);
