@@ -146,32 +146,26 @@ GO
 -- Tabela Lote
 INSERT INTO dbo.Lote (Cd_Lote, Cd_Fabricante, Cd_Tipo_Vacina, Dt_Fabricacao, Dt_Vencimento) VALUES
 -- Lotes Válidos
-('PF2025A', 'PFIZER', 1, '2024-01-10', '2025-07-10'), ('CV2025B', 'BUTANTAN', 2, '2024-02-15', '2025-08-15'), ('GR2025C', 'FIOCRUZ', 3, '2024-03-20', '2025-09-20'), ('TV2026A', 'FIOCRUZ', 4, '2024-04-25', '2026-04-25'), ('FA2026B', 'FIOCRUZ', 5, '2024-05-01', '2026-05-01'), ('HB2027A', 'BUTANTAN', 6, '2024-06-05', '2027-06-05'), ('HP2027B', 'BUTANTAN', 7, '2024-07-10', '2027-07-10'), ('DT2028A', 'FIOCRUZ', 8, '2024-08-15', '2028-08-15'), ('PF2025D', 'PFIZER', 1, '2024-02-10', '2025-08-10'), ('CV2025E', 'BUTANTAN', 2, '2024-03-15', '2025-09-15'), ('PO2026A', 'FIOCRUZ', 9, '2024-05-15', '2026-05-15'), ('BCG2027A', 'FIOCRUZ', 10, '2024-06-20', '2027-06-20'), ('ROTA2026B','BUTANTAN', 11, '2024-07-25', '2026-07-25'), ('MENINGO27B','FIOCRUZ', 12, '2024-08-01', '2027-08-01'), ('PNEUMO28B','PFIZER', 13, '2024-09-05', '2028-09-05'), ('VARI2026C','BUTANTAN', 14, '2024-10-10', '2026-10-10'), ('HEPA2027C','FIOCRUZ', 15, '2024-11-15', '2027-11-15'), ('DTPa2028C','PFIZER', 16, '2024-12-20', '2028-12-20'), ('AZ2025A','ASTRAZENECA', 17, '2024-01-20', '2025-07-20'), ('JANSS2025A','JANSSEN', 18, '2024-02-25', '2025-08-25'), ('DENG2026A','BUTANTAN', 19, '2024-03-30', '2026-03-30'), ('RAIVA2027A','FIOCRUZ', 20, '2024-04-05', '2027-04-05'),
+('PF2025A', 'PFIZER', 1, '2024-01-10', '2025-07-10'), ('CV2025B', 'BUTANTAN', 2, '2024-02-15', '2025-08-15'), ('GR2025C', 'FIOCRUZ', 3, '2024-03-20', '2025-09-20'), ('TV2026A', 'FIOCRUZ', 4, '2024-04-25', '2026-04-25'), ('FA2026B', 'FIOCRUZ', 5, '2024-05-01', '2026-05-01'), ('HB2027A', 'BUTANTAN', 6, '2024-06-05', '2027-06-05'), ('HP2027B', 'BUTANTAN', 7, '2024-07-10', '2027-07-10'), ('DT2028A', 'FIOCRUZ', 8, '2024-08-15', '2028-08-15'), ('PF2025D', 'PFIZER', 1, '2024-02-10', '2025-08-10'), ('CV2025E', 'BUTANTAN', 2, '2024-03-15', '2025-09-15'), ('PO2026A', 'FIOCRUZ', 9, '2024-05-15', '2026-05-15'), ('BCG2027A', 'FIOCRUZ', 10, '2024-06-20', '2027-06-20'), ('ROTA2026B','BUTANTAN', 11, '2024-07-25', '2026-07-25'), ('MENINGO27B','FIOCRUZ', 12, '2024-08-01', '2027-08-01'), ('PNEUMO28B','PFIZER', 13, '2024-09-05', '2028-09-05'), ('VARI2026C','BUTANTAN', 14, '2024-10-10', '2026-10-10'), ('HEPA2027C','FIOCRUZ', 15, '2024-11-15', '2027-11-15'), ('DTPa2028C','PFIZER', 16, '2024-12-20', '2028-12-20'), ('AZ2025A','ASTRAZENECA', 17, '2024-01-20', '2025-07-20'), ('JANSS2025A','JANSSEN', 18, '2024-02-25', '2025-08-25'), ('DENG2026A','BUTANTAN', 19, '2024-03-30', '2026-03-30'), ('RAIVA2027A','FIOCRUZ', 20, '2024-04-05', '2027-04-05'), ('VENCEJUL25', 'BUTANTAN', 19, '2024-07-15', '2025-07-15'),
 -- Lotes Vencidos
-('EXP2024A', 'PFIZER', 1, '2023-12-01', '2024-12-01'),
-('EXP2025B', 'FIOCRUZ', 3, '2024-01-15', '2025-01-15'),
-('EXP2024C', 'JANSSEN', 18, '2023-05-20', '2024-05-20'),
-('EXP2023D', 'BUTANTAN', 6, '2022-10-10', '2023-10-10'),
-('EXP2025E', 'ASTRAZENECA', 17, '2024-02-01', '2025-02-01');
+('EXP2024A', 'PFIZER', 1, '2023-12-01', '2024-12-01'), ('EXP2025B', 'FIOCRUZ', 3, '2024-01-15', '2025-01-15'), ('EXP2024C', 'JANSSEN', 18, '2023-05-20', '2024-05-20'), ('EXP2023D', 'BUTANTAN', 6, '2022-10-10', '2023-10-10'), ('EXP2025E', 'ASTRAZENECA', 17, '2024-02-01', '2025-02-01'), ('EXP_JUN25', 'FIOCRUZ', 5, '2024-06-01', '2025-06-01');
 GO
 
--- Tabela Ampola (mais de 20 ampolas)
+-- Tabela Ampola 
 INSERT INTO dbo.Ampola (Cd_Ampola, Qt_Doses, Vl_Volume, Ds_Condicoes_Armazenamento, Cd_Lote) VALUES
-('AMP001', 6, 0.3, 'Manter ultra-congelado', 'PF2025A'), ('AMP002', 1, 0.5, 'Manter refrigerado', 'CV2025B'), ('AMP003', 10, 5.0, 'Manter refrigerado', 'GR2025C'), ('AMP004', 10, 5.0, 'Manter refrigerado', 'TV2026A'), ('AMP005', 10, 5.0, 'Manter refrigerado', 'FA2026B'), ('AMP006', 1, 1.0, 'Manter refrigerado', 'HB2027A'), ('AMP007', 1, 0.5, 'Manter refrigerado', 'HP2027B'), ('AMP008', 20, 10.0, 'Manter refrigerado', 'DT2028A'), ('AMP009', 6, 0.3, 'Manter ultra-congelado', 'PF2025D'), ('AMP010', 1, 0.5, 'Manter refrigerado', 'CV2025E'), ('AMP011', 20, 2.0, 'Manter refrigerado', 'PO2026A'), ('AMP012', 20, 2.0, 'Manter refrigerado', 'BCG2027A'), ('AMP013', 1, 1.5, 'Manter refrigerado', 'ROTA2026B'), ('AMP014', 10, 5.0, 'Manter refrigerado', 'MENINGO27B'), ('AMP015', 10, 5.0, 'Manter refrigerado', 'PNEUMO28B'), ('AMP016', 1, 0.5, 'Manter congelado', 'VARI2026C'), ('AMP017', 1, 0.5, 'Manter refrigerado', 'HEPA2027C'), ('AMP018', 10, 5.0, 'Manter refrigerado', 'DTPa2028C'), ('AMP019', 10, 5.0, 'Manter refrigerado', 'AZ2025A'), ('AMP020', 5, 2.5, 'Manter refrigerado', 'JANSS2025A'), ('AMP021', 5, 2.5, 'Manter refrigerado', 'DENG2026A'), ('AMP022', 1, 1.0, 'Manter refrigerado', 'RAIVA2027A'),
+('AMP001', 6, 0.3, 'Manter ultra-congelado', 'PF2025A'), ('AMP002', 1, 0.5, 'Manter refrigerado', 'CV2025B'), ('AMP003', 10, 5.0, 'Manter refrigerado', 'GR2025C'), ('AMP004', 10, 5.0, 'Manter refrigerado', 'TV2026A'), ('AMP005', 10, 5.0, 'Manter refrigerado', 'FA2026B'), ('AMP006', 1, 1.0, 'Manter refrigerado', 'HB2027A'), ('AMP007', 1, 0.5, 'Manter refrigerado', 'HP2027B'), ('AMP008', 20, 10.0, 'Manter refrigerado', 'DT2028A'), ('AMP009', 6, 0.3, 'Manter ultra-congelado', 'PF2025D'), ('AMP010', 1, 0.5, 'Manter refrigerado', 'CV2025E'), ('AMP011', 20, 2.0, 'Manter refrigerado', 'PO2026A'), ('AMP012', 20, 2.0, 'Manter refrigerado', 'BCG2027A'), ('AMP013', 1, 1.5, 'Manter refrigerado', 'ROTA2026B'), ('AMP014', 10, 5.0, 'Manter refrigerado', 'MENINGO27B'), ('AMP015', 10, 5.0, 'Manter refrigerado', 'PNEUMO28B'), ('AMP016', 1, 0.5, 'Manter congelado', 'VARI2026C'), ('AMP017', 1, 0.5, 'Manter refrigerado', 'HEPA2027C'), ('AMP018', 10, 5.0, 'Manter refrigerado', 'DTPa2028C'), ('AMP019', 10, 5.0, 'Manter refrigerado', 'AZ2025A'), ('AMP020', 5, 2.5, 'Manter refrigerado', 'JANSS2025A'), ('AMP021', 5, 2.5, 'Manter refrigerado', 'DENG2026A'), ('AMP022', 1, 1.0, 'Manter refrigerado', 'RAIVA2027A'), ('AMPVENCE01', 5, 2.5, 'Manter refrigerado', 'VENCEJUL25'),
 -- Ampolas de Lotes Vencidos
-('AMPEXP01', 6, 0.3, 'Manter ultra-congelado', 'EXP2024A'),
-('AMPEXP02', 10, 5.0, 'Manter refrigerado', 'EXP2025B'),
-('AMPEXP03', 5, 2.5, 'Manter refrigerado', 'EXP2024C');
+('AMPEXP01', 6, 0.3, 'Manter ultra-congelado', 'EXP2024A'), ('AMPEXP02', 10, 5.0, 'Manter refrigerado', 'EXP2025B'), ('AMPEXP03', 5, 2.5, 'Manter refrigerado', 'EXP2024C'), ('AMPEXP_JUN25', 10, 5.0, 'Manter refrigerado', 'EXP_JUN25');
 GO
 
--- Tabela Dose (mais de 40 doses)
+-- Tabela Dose 
 INSERT INTO dbo.Dose (Cd_Dose, Nu_Dose, Cd_Ampola) VALUES
-(1, 1, 'AMP001'), (2, 2, 'AMP001'), (3, 1, 'AMP002'), (4, 1, 'AMP003'), (5, 2, 'AMP003'), (6, 1, 'AMP004'), (7, 1, 'AMP005'), (8, 1, 'AMP006'), (9, 1, 'AMP007'), (10, 1, 'AMP008'), (11, 3, 'AMP001'), (12, 1, 'AMP009'), (13, 1, 'AMP010'), (14, 3, 'AMP003'), (15, 1, 'AMP011'), (16, 2, 'AMP011'), (17, 1, 'AMP012'), (18, 1, 'AMP013'), (19, 1, 'AMP014'), (20, 2, 'AMP014'), (21, 1, 'AMP015'), (22, 2, 'AMP015'), (23, 1, 'AMP016'), (24, 1, 'AMP017'), (25, 1, 'AMP018'), (26, 2, 'AMP018'), (27, 1, 'AMP019'), (28, 2, 'AMP019'), (29, 1, 'AMP020'), (30, 1, 'AMP021'), (31, 1, 'AMP022'), (32, 4, 'AMP001'), (33, 5, 'AMP001'), (34, 6, 'AMP001'), (35, 4, 'AMP003'), (36, 5, 'AMP003'), (37, 2, 'AMP008'), (38, 3, 'AMP008'), (39, 4, 'AMP008'), (40, 3, 'AMP011'), (41, 3, 'AMP014'), (42, 3, 'AMP015'), (43, 3, 'AMP018'), (44, 3, 'AMP019'),
+(1, 1, 'AMP001'), (2, 2, 'AMP001'), (3, 1, 'AMP002'), (4, 1, 'AMP003'), (5, 2, 'AMP003'), (6, 1, 'AMP004'), (7, 1, 'AMP005'), (8, 1, 'AMP006'), (9, 1, 'AMP007'), (10, 1, 'AMP008'), (11, 3, 'AMP001'), (12, 1, 'AMP009'), (13, 1, 'AMP010'), (14, 3, 'AMP003'), (15, 1, 'AMP011'), (16, 2, 'AMP011'), (17, 1, 'AMP012'), (18, 1, 'AMP013'), (19, 1, 'AMP014'), (20, 2, 'AMP014'), (21, 1, 'AMP015'), (22, 2, 'AMP015'), (23, 1, 'AMP016'), (24, 1, 'AMP017'), (25, 1, 'AMP018'), (26, 2, 'AMP018'), (27, 1, 'AMP019'), (28, 2, 'AMP019'), (29, 1, 'AMP020'), (30, 1, 'AMP021'), (31, 1, 'AMP022'), (32, 4, 'AMP001'), (33, 5, 'AMP001'), (34, 6, 'AMP001'), (35, 4, 'AMP003'), (36, 5, 'AMP003'), (37, 2, 'AMP008'), (38, 3, 'AMP008'), (39, 4, 'AMP008'), (40, 3, 'AMP011'), (41, 3, 'AMP014'), (42, 3, 'AMP015'), (43, 3, 'AMP018'), (44, 3, 'AMP019'), (53, 1, 'AMPVENCE01'),
 -- Doses de Ampolas Vencidas
-(50, 1, 'AMPEXP01'),
-(51, 1, 'AMPEXP02'),
-(52, 1, 'AMPEXP03');
+(50, 1, 'AMPEXP01'), (51, 1, 'AMPEXP02'), (52, 1, 'AMPEXP03'), (54, 1, 'AMPEXP_JUN25');
 GO
+
+
 
 -- Tabela Vacinacao
 INSERT INTO dbo.Vacinacao (Cd_Paciente, Cd_COREN, Cd_Unidade_Medica, Cd_Dose, Dt_Vacinacao) VALUES
